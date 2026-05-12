@@ -22,6 +22,7 @@
     </license>
   </licenses>
 
+
   <scm>
     <url>https://github.com/qos-ch/slf4j</url>
     <connection>scm:git:https://github.com/qos-ch/slf4j.git</connection>
@@ -47,6 +48,10 @@
     <module>integration</module>
     <module>slf4j-migrator</module>
   </modules>
+
+  <properties>
+      <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
+  </properties>
 
   <dependencyManagement>
     <dependencies>
@@ -218,6 +223,18 @@
 
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>${central-publishing-maven-plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+          <excludeArtifacts>integration</excludeArtifacts>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
